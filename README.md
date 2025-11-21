@@ -108,7 +108,6 @@ This framework is intended solely for internal profitability modeling and scenar
 ```text
 Credit_Portfolio_Modeling/  
 ├─ README.md                   # Commentary registry and modeling overview  
-├── _archived_cloned_repo_/    # Source repo for loan dataset  
 ├── CostOfFundsCurves/         # Final synthetic curves for funding cost rates  
 ├── data/
 │  ├── raw/                    # Uncleaned source files (portfolio + rate inputs)  
