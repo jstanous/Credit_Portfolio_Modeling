@@ -2,12 +2,18 @@
 
 ## Overview
 
-This project delivers a validated credit portfolio model aligned with Retail Basel III IRB and profitability frameworks. It integrates funding costs, capital formation, risk‑weighted asset logic, and profitability attribution across 38,000+ loans. The model evaluates lifetime loan performance based on origination attributes.
+This project represents a multi-phased credit portfolio modeling framework aligned with Retail Basel III IRB and profitability requirements. It defines capital formation logic, integrates synthetic funding cost curves, and applies risk‑weighted asset overlays to origination attributes across 38,000+ loans. The current phase emphasizes governance‑grade documentation, audit trail transparency, and modular Excel structures, providing the foundation for migration to Snowflake/dbt and future development of scalable marts and interactive dashboards.
 
 ## Attribution
 
 Foundational loan records were sourced from the [Loan Portfolio Analysis](https://github.com/arahm071/Loan-Portfolio-Analysis) repository.  
 All modeling logic, enhancements, and capital/profitability overlays are original to this project.
+
+## Roadmap
+
+- **Phase One (current):** Framework design, Basel III IRB overlays, synthetic funding curves, governance documentation, modular Excel structures
+- **Phase Two:** Migration to Snowflake/dbt, scalable marts, expanded portfolio metrics
+- **Phase Three:** Interactive dashboards, delinquency overlays, scenario analysis, stakeholder reporting
 
 ## Objectives
 
@@ -113,10 +119,13 @@ Credit_Portfolio_Modeling/
 
 ## Governance Notes  
 
+- Large Excel artifacts are versioned and loaded via Git LFS to ensure reproducibility and storage efficiency
 - All rates are stored as structured tables and applied consistently  
 - All formulas are structured-reference based and validated for numeric equivalence  
 - All lookup logic includes fallback handling and unit normalization  
 - Remaining Maturity manipulation for K is documented
+
+## Validation Notes  
 - Risk Weight Precision Drift in Model Validation:
   - **Observation:** Modeled RW vs time‑series average shows minor drift (≈ −0.0001, −0.0021%).
   - **Cause:** Averaging method floating‑point precision.  
