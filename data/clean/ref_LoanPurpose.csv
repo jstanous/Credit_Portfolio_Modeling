@@ -1,0 +1,15 @@
+Loan Purpose,Collateral Type,Exposure Type
+car,Vehicle,Personal Loan
+credit card,Unsecured,Credit Card
+Debt consolidation,Unsecured,Personal Loan
+educational,Unsecured,Personal Loan
+home improvement,Property (Lien),Mortgage
+house,Property (Lien),Mortgage
+major purchase,Asset-backed,Personal Loan
+medical,Unsecured,Personal Loan
+moving,Unsecured,Personal Loan
+other,Unsecured,Personal Loan
+renewable_energy,Equipment,Mortgage
+small business,Business Assets,Retail SME
+vacation,Unsecured,Personal Loan
+wedding,Unsecured,Personal Loan

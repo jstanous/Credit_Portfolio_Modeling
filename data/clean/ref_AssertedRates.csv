@@ -1,0 +1,14 @@
+Factor Name,Rate
+Expense Rate,0.03
+Equity Rate,0.1
+Internal Loss Multiplier,0.95
+Business Indicator Component,0.12
+TLAC Rate,0.18
+SubDebt Rate,0.1175
+Minimum Capital Rate,0.125
+TLAC COF Rate,0.03
+SubDebt COF Rate,0.04
+Funding Benefit Adjustment,0.75
+Minimum ROE,0.12
+Preferred Dividend Rate,0.06
+Tax Rate,0.28
