@@ -1,0 +1,144 @@
+sources:
+  - name: credit_portfolio
+    database: credit_portfolio
+    schema: raw
+    description: "{{ doc('source__credit_portfolio') }}"
+#    config:
+#      freshness:
+#        warn_after:
+#          count: 1
+#          period: day
+#        error_after:
+#          count: 2
+#          period: day
+#      loaded_at_field: _etl_loaded_at
+    tables:
+      - name: loans
+        description: "{{ doc('table__loans') }}"
+        columns:
+          - name: id
+            data_type: number
+            description: "{{ doc('column__loan_id') }}"
+            data_tests:
+              - unique
+              - not_null
+          - name: address_state
+            data_type: varchar
+            description: "{{ doc('column__borrower_state') }}"
+            data_tests:
+              - not_null
+          - name: application_type
+            data_type: varchar
+            description: "{{ doc('column__borrower_type') }}"
+            data_tests:
+              - not_null
+          - name: emp_length
+            data_type: varchar
+            description: "{{ doc('column__borrower_employment_tenure') }}"
+            data_tests:
+              - not_null
+          - name: emp_title
+            data_type: varchar
+            description: "{{ doc('column__borrower_employment_title') }}"
+#            data_tests:
+#              - not_null
+          - name: grade
+            data_type: varchar
+            description: "{{ doc('column__borrower_credit_grade') }}"
+            data_tests:
+              - not_null
+          - name: home_ownership
+            data_type: varchar
+            description: "{{ doc('column__borrower_residence_status') }}"
+            data_tests:
+              - not_null
+          - name: issue_date
+            data_type: date
+            description: "{{ doc('column__loan_origination_date') }}"
+            data_tests:
+              - not_null
+          - name: last_credit_pull_date
+            data_type: date
+            description: "{{ doc('column__borrower_last_credit_report_date') }}"
+            data_tests:
+              - not_null
+          - name: last_payment_date
+            data_type: date
+            description: "{{ doc('column__loan_last_payment_date') }}"
+            data_tests:
+              - not_null
+          - name: loan_status
+            data_type: varchar
+            description: "{{ doc('column__loan_status') }}"
+            data_tests:
+              - not_null
+          - name: next_payment_date
+            data_type: date
+            description: "{{ doc('column__loan_next_payment_date') }}"
+            data_tests:
+              - not_null
+          - name: member_id
+            data_type: number
+            description: "{{ doc('column__borrower_id') }}"
+            data_tests:
+              - not_null
+          - name: purpose
+            data_type: varchar
+            description: "{{ doc('column__loan_purpose') }}"
+            data_tests:
+              - not_null
+          - name: sub_grade
+            data_type: varchar
+            description: "{{ doc('column__borrower_credit_subgrade') }}"
+            data_tests:
+              - not_null
+          - name: term_length
+            data_type: number
+            description: "{{ doc('column__loan_term') }}"
+            data_tests:
+              - not_null
+          - name: length_type
+            data_type: varchar
+            description: "{{ doc('column__loan_term_type') }}"
+            data_tests:
+              - not_null
+          - name: verification_status
+            data_type: varchar
+            description: "{{ doc('column__borrower_verification_status') }}"
+            data_tests:
+              - not_null
+          - name: annual_income
+            data_type: number
+            description: "{{ doc('column__borrower_annual_income') }}"
+            data_tests:
+              - not_null
+          - name: dti
+            data_type: number
+            description: "{{ doc('column__borrower_debt_to_income') }}"
+            data_tests:
+              - not_null
+          - name: installment
+            data_type: number
+            description: "{{ doc('column__loan_payment_amount') }}"
+            data_tests:
+              - not_null
+          - name: int_rate
+            data_type: number
+            description: "{{ doc('column__loan_interest_rate') }}"
+            data_tests:
+              - not_null
+          - name: loan_amount
+            data_type: number
+            description: "{{ doc('column__loan_amount') }}"
+            data_tests:
+              - not_null
+          - name: total_acc
+            data_type: number
+            description: "{{ doc('column__borrower_total_accounts') }}"
+            data_tests:
+              - not_null
+          - name: total_payment
+            data_type: number
+            description: "{{ doc('column__loan_total_payment_amount') }}"
+            data_tests:
+              - not_null

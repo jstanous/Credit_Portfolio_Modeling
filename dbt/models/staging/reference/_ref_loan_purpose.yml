@@ -1,0 +1,20 @@
+models:
+  - name: ref_loan_purpose
+    description: "{{ doc('model__ref_loan_purpose') }}"
+    # Loan Attributes
+    columns:
+      - name: loan_purpose
+        data_type: varchar
+        description: "{{ doc('column__loan_purpose') }}"
+        data_tests:
+          - not_null
+      - name: collateral_type
+        data_type: varchar
+        description: "{{ doc('column__collateral_type') }}"
+        data_tests:
+          - not_null
+      - name: exposure_type
+        data_type: varchar
+        description: "{{ doc('column__exposure_type') }}"
+        data_tests:
+          - not_null

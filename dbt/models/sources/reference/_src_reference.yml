@@ -1,0 +1,34 @@
+sources:
+  - name: credit_portfolio
+    database: credit_portfolio
+    schema: ref
+    description: "{{ doc('source__credit_portfolio_ref') }}"
+#    config:
+#      freshness:
+#        warn_after:
+#          count: 1
+#          period: day
+#        error_after:
+#          count: 2
+#          period: day
+#      loaded_at_field: _etl_loaded_at
+    tables:
+      - name: loan_purpose
+        description: "{{ doc('table__loan_purpose') }}"
+        columns:
+          - name: loan_purpose
+            data_type: varchar
+            description: "{{ doc('column__loan_purpose') }}"
+            data_tests:
+              - unique
+              - not_null
+          - name: collateral_type
+            data_type: varchar
+            description: "{{ doc('column__collateral_type') }}"
+            data_tests:
+              - not_null
+          - name: exposure_type
+            data_type: varchar
+            description: "{{ doc('column__exposure_type') }}"
+            data_tests:
+              - not_null

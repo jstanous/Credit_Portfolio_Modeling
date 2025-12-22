@@ -1,0 +1,89 @@
+models:
+  - name: eph_loans
+    description: "{{ doc('model__eph_loans') }}"
+    columns:
+      - name: loan_id
+        data_type: number
+        description: "{{ doc('column__loan_id') }}"
+        data_tests:
+          - unique
+          - not_null
+      - name: borrower_id
+        data_type: number
+        description: "{{ doc('column__borrower_id') }}"
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('eph_borrowers')
+                field: borrower_id
+      - name: loan_origination_date
+        data_type: date
+        description: "{{ doc('column__loan_origination_date') }}"
+        data_tests:
+          - not_null
+      - name: loan_maturity_date
+        data_type: date
+        description: "{{ doc('column__loan_maturity_date') }}"
+        data_tests:
+          - not_null
+      - name: loan_amount
+        data_type: number
+        description: "{{ doc('column__loan_amount') }}"
+        data_tests:
+          - not_null
+      - name: loan_term
+        data_type: number
+        description: "{{ doc('column__loan_term') }}"
+        data_tests:
+          - not_null
+      - name: loan_term_type
+        data_type: varchar
+        description: "{{ doc('column__loan_term_type') }}"
+        data_tests:
+          - not_null
+      - name: loan_interest_rate
+        data_type: number
+        description: "{{ doc('column__loan_interest_rate') }}"
+        data_tests:
+          - not_null
+      - name: loan_payment_amount
+        data_type: number
+        description: "{{ doc('column__loan_payment_amount') }}"
+        data_tests:
+          - not_null
+      - name: loan_last_payment_date
+        data_type: date
+        description: "{{ doc('column__loan_last_payment_date') }}"
+        data_tests:
+          - not_null
+      - name: loan_next_payment_date
+        data_type: date
+        description: "{{ doc('column__loan_next_payment_date') }}"
+        data_tests:
+          - not_null
+      - name: loan_total_payment_amount
+        data_type: number
+        description: "{{ doc('column__loan_total_payment_amount') }}"
+        data_tests:
+          - not_null
+      - name: loan_status
+        data_type: varchar
+        description: "{{ doc('column__loan_status') }}"
+        data_tests:
+          - not_null
+      - name: loan_purpose
+        data_type: varchar
+        description: "{{ doc('column__loan_purpose') }}"
+        data_tests:
+          - not_null
+      - name: collateral_type
+        data_type: varchar
+        description: "{{ doc('column__collateral_type') }}"
+        data_tests:
+          - not_null
+      - name: exposure_type
+        data_type: varchar
+        description: "{{ doc('column__exposure_type') }}"
+        data_tests:
+          - not_null

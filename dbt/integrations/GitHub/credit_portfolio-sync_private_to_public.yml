@@ -1,13 +1,13 @@
-name: Sync Jaffle Shop Public Exemplar
+name: Sync Credit Portfolio Public Exemplar
 
 on:
-  # Run when jaffle-shop artifacts change
+  # Run when credit_portfolio artifacts change
   push:
     branches:
       - main
     paths:
-      - "models/jaffle_shop/**"
-      - "projects/jaffle_shop/**"
+      - "models/credit_portfolio/**"
+      - "projects/credit_portfolio/**"
   # Run on demand
   workflow_dispatch:
 
@@ -26,23 +26,23 @@ jobs:
       - name: Checkout public repo
         uses: actions/checkout@v4
         with:
-          repository: 'jstanous/jaffle-shop'
+          repository: 'jstanous/credit_portfolio_modeling'
           path: 'public'
-          token: ${{ secrets.PAT_Public_JaffleShop }}
+          token: ${{ secrets.PAT_Public_CreditPortfolioModeling }}
 
       # Sync Jaffle Shop dbt artifacts with path remapping
       # Exclude .git directory to preserve repo
       - name: Sync projects
         run: |
-          rsync -av --delete --exclude '.git' ./private/projects/jaffle_shop/ ./public/
+          rsync -av --delete --exclude '.git' ./private/projects/credit_portfolio/ ./public/dbt
       - name: Sync models
         run: |
-          rsync -av --delete --exclude '.git' ./private/models/jaffle_shop/models/ ./public/models/
+          rsync -av --delete --exclude '.git' ./private/models/credit_portfolio/models/ ./public/dbt/models/
 
       # Rename macro exemplars .sqlx to .sql in public
       - name: Rename .sqlx to .sql
         run: |
-          find ./public/macros -type f -name "*.sqlx" -exec bash -c 'mv "$0" "${0%.sqlx}.sql"' {} \;
+          find ./public/dbt/macros -type f -name "*.sqlx" -exec bash -c 'mv "$0" "${0%.sqlx}.sql"' {} \;
 
       # Prepare commit message using commit message from private repo
       - name: Prepare commit message
