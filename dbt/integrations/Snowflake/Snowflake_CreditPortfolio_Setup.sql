@@ -11,6 +11,7 @@ Steps:
      - Creates DBT_DB.CREDIT_PORTFOLIO schema for dbt created internal deployment artifacts.
      - Creates CREDIT_PORTFOLIO database for production exemplars.
      - Drops CREDIT_PORTFOLIO.PUBLIC schema to enforce explicit schema usage.
+     - Creates UTIL_DB database for reusable functions, file formats, and other tools.  
 
   2. Role & Privilege Grants
      - Uses SECURITYADMIN role for controlled privilege assignment.
@@ -26,6 +27,7 @@ Steps:
        STAGING (staging models),
        INTERMEDIATES (intermediate models),
        MARTS (mart models).
+       UDF (user defined functions).
      - Each schema includes comments clarifying its purpose.
 
   4. Data Tables
@@ -49,7 +51,7 @@ Steps:
   6. Create File Format in UTIL_DB
      - This script provisions a system-wide file format for use across Snowflake ingestion routines.
      - It includes:
-     - A dedicated UTIL_DB database for reusable tools and formats
+     - Uses dedicated UTIL_DB database for reusable tools and formats
      - A public file format named ONE_HEADERROW_COMMA_DELIM_DBLQUOTE_ENCLOSED
      - Configuration for CSV files with:
        - One header rows
@@ -81,6 +83,9 @@ CREATE DATABASE IF NOT EXISTS CREDIT_PORTFOLIO
        COMMENT = 'Dedicated database for production artifacts credit portfolio project';
 DROP SCHEMA IF EXISTS CREDIT_PORTFOLIO.PUBLIC;
 
+CREATE DATABASE IF NOT EXISTS UTIL_DB
+   COMMENT = 'Database to store system-wide available tools';
+
 --2. Role & Privilege Grants
 USE ROLE SECURITYADMIN;
 GRANT USAGE ON DATABASE CREDIT_PORTFOLIO TO ROLE DBT_ROLE;
@@ -111,6 +116,9 @@ CREATE SCHEMA IF NOT EXISTS INTERMEDIATES
 
 CREATE SCHEMA IF NOT EXISTS MARTS
        COMMENT = 'Schema for credit portfolio marts models';
+
+CREATE SCHEMA IF NOT EXISTS UDF
+       COMMENT = 'Schema for credit portfolio user defined functions';
 
 -- 4. Data Tables
 -- Raw Data Table
@@ -182,9 +190,6 @@ CREATE STAGE IF NOT EXISTS CREDIT_PORTFOLIO.RAW.CREDIT_PORTFOLIO_STAGE
        COMMENT = 'Stage for credit portfolio data loads';
 
 -- 6. Create File Format in UTLI_DB
-CREATE DATABASE IF NOT EXISTS UTIL_DB
-   COMMENT = 'Database to store system-wide available tools';
-
 CREATE OR REPLACE FILE FORMAT UTIL_DB.PUBLIC.ONE_HEADERROW_COMMA_DELIM_DBLQUOTE_ENCLOSED
    TYPE = CSV,
    SKIP_HEADER = 1,
