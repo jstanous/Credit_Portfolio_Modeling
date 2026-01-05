@@ -22,7 +22,7 @@ LANGUAGE SQL
 AS
 $$
 COALESCE(
-         (SELECT PD
+         (SELECT MIN(PD)
             FROM CREDIT_PORTFOLIO.REF.PD
            WHERE CREDIT_SUBGRADE = input_subgrade
          )

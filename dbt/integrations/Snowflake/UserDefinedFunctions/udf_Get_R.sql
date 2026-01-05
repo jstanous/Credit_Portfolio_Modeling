@@ -27,15 +27,17 @@ LANGUAGE SQL
 AS
 $$
 COALESCE(
-         (SELECT CASE input_exposure_type
-                      WHEN 'Retail SME'
-                           THEN CAST(
-                                     (0.12 * ((1 - EXP(-50 * input_pd)) / (1 - EXP(-50)))
-                                     +0.24 * (1 - ((1 - EXP(-50 * input_pd)) / (1 - EXP(-50))))
-                                     )
-                                     AS NUMBER(10,8))
-                      ELSE R
-                  END
+         (SELECT MIN(
+                     CASE input_exposure_type
+                          WHEN 'Retail SME'
+                               THEN CAST(
+                                         (0.12 * ((1 - EXP(-50 * input_pd)) / (1 - EXP(-50)))
+                                         +0.24 * (1 - ((1 - EXP(-50 * input_pd)) / (1 - EXP(-50))))
+                                         )
+                                         AS NUMBER(10,8))
+                          ELSE R
+                      END
+                    )
             FROM CREDIT_PORTFOLIO.REF.R
            WHERE EXPOSURE_TYPE = input_exposure_type
          )

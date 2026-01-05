@@ -23,11 +23,13 @@ CREATE OR REPLACE FUNCTION udf_Get_CofRate
     AS
     $$
     COALESCE(
-             (SELECT CASE input_pricing_term
-                          WHEN 36 THEN USD_COF_3Y
-                          WHEN 60 THEN USD_COF_5Y
-                          ELSE 0.99999999
-                      END
+             (SELECT MIN(
+                         CASE input_pricing_term
+                              WHEN 36 THEN USD_COF_3Y
+                              WHEN 60 THEN USD_COF_5Y
+                              ELSE 0.99999999
+                          END
+                        )
                 FROM CREDIT_PORTFOLIO.REF.COF_RATES
                WHERE AS_OF_DATE = input_pricing_date
              )

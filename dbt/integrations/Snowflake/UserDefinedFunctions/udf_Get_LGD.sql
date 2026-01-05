@@ -21,7 +21,7 @@ CREATE OR REPLACE FUNCTION udf_Get_LGD
     AS
     $$
     COALESCE(
-             (SELECT LGD
+             (SELECT MIN(LGD)
                 FROM CREDIT_PORTFOLIO.REF.LGD
                WHERE COLLATERAL_TYPE = input_collateral_type
              )
