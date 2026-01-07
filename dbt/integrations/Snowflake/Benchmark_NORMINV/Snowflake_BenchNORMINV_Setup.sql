@@ -1,9 +1,11 @@
 /*===========================================================================================
   Artifact:     NORMINV Benchmark Seed Tables (Scale‑6)
   Context:      Basel IRB – Performance Benchmarking Framework
-  Purpose:      Generate deterministic p-value seed tables of varying sizes to support
+  Purpose:      Generate deterministic p‑value seed tables of varying sizes to support
                 performance testing across three execution models:
-                (1) Python UDF, (2) SQL UDF, and (3) SQL Lookup Table.
+                  (1) Python UDF
+                  (2) SQL UDF
+                  (3) SQL Lookup Table
 
   Overview:
     Each table is generated using a uniform seeding strategy:
@@ -20,15 +22,15 @@
     • 100,000,000 rows
 
   Schema (consistent across all scenarios):
-    SEED_P        NUMBER(10,6)   – Deterministic PD value
-    PYFUNC        FLOAT          – Python UDF result (populated during benchmark)
-    SQLFUNC       FLOAT          – SQL UDF result (populated during benchmark)
-    SQLUPD        FLOAT          – Lookup-table result (populated during benchmark)
+    SEED_P   NUMBER(10,6)   – Deterministic PD value
+    PYFUNC   FLOAT          – Python UDF result (populated during benchmark)
+    SQLFUNC  FLOAT          – SQL UDF result (populated during benchmark)
+    SQLUPD   FLOAT          – Lookup‑table result (populated during benchmark)
 
   Notes:
-    • Tables are intentionally generated empty in PYFUNC/SQLFUNC/SQLUPD columns.
-      Benchmark scripts will populate each column independently.
-    • Using sequential PDs isolates function performance from data skew.
+    • Tables are intentionally created with NULL result columns; benchmark scripts populate
+      PYFUNC, SQLFUNC, and SQLUPD independently.
+    • Sequential PDs isolate function performance from data skew.
     • Repeated PDs at high rowcounts simulate realistic production workloads.
 
 ===========================================================================================*/

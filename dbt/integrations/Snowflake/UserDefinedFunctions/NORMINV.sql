@@ -27,9 +27,13 @@ CREATE OR REPLACE FUNCTION NORMINV
     from scipy.stats import norm
 
     def run(p):
-        if p <= 0 or p >= 1:
+        """
+        Inverse standard normal CDF using SciPy.
+        Matches Excel NORM.S.INV().
+        """
+        if p is None or p <= 0 or p >= 1:
             return None
-        return float(norm.ppf(p))
+        return float(norm.ppf(float(p)))
     $$;
 
 COMMENT ON FUNCTION UTIL_DB.PUBLIC.NORMINV(FLOAT)
