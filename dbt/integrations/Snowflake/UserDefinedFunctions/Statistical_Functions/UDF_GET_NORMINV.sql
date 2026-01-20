@@ -26,7 +26,7 @@ SELECT MIN(NORMINV)
  WHERE P = p_stat
 $$;
 
-COMMENT ON FUNCTION CREDIT_PORTFOLIO.UDF.udf_Get_NORMINV(NUMBER(8,6))
+COMMENT ON FUNCTION CREDIT_PORTFOLIO.UDF.UDF_GET_NORMINV(NUMBER(8,6))
      IS 'Pulls precalculated NORMINV for p-stat input as scale 6.';
 
 /*-----------------------------------

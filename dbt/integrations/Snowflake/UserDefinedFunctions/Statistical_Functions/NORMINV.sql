@@ -15,26 +15,23 @@ USE DATABASE UTIL_DB;
 USE SCHEMA PUBLIC;
 
 CREATE OR REPLACE FUNCTION NORMINV
-    (p FLOAT
-    )
+      (p FLOAT
+      )
     RETURNS FLOAT
     LANGUAGE PYTHON
     RUNTIME_VERSION = '3.10'
     PACKAGES = ('scipy')
     HANDLER = 'run'
     AS
-    $$
-    from scipy.stats import norm
+$$
+from scipy.stats import norm
 
-    def run(p):
-        """
-        Inverse standard normal CDF using SciPy.
-        Matches Excel NORM.S.INV().
-        """
-        if p is None or p <= 0 or p >= 1:
-            return None
-        return float(norm.ppf(float(p)))
-    $$;
+def run(p):
+    if p is None or p <= 0 or p >= 1:
+        return None
+
+    return float(norm.ppf(float(p)))
+$$;
 
 COMMENT ON FUNCTION UTIL_DB.PUBLIC.NORMINV(FLOAT)
      IS 'Inverse Normal Probability Function replicating Excel NORM.S.INV()';
