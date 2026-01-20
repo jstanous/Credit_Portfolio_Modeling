@@ -1,6 +1,6 @@
-{% docs model__eph_loans %}  
-Ephemeral model for Loan data.  
-Separates Loan attribues from Borrower attribues.
+{% docs model__int_loans %}  
+Intermediate model for Loan data.  
+Enriches Loan attributes with Maturity Date.
 References Borrower Id as Foreign Key.
 Employs star schema methodology.
 

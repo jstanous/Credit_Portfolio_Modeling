@@ -1,12 +1,12 @@
 /*------------------------------------------------------------------------------
-Function: UDF_GET_RW
+Function: UDF_CALC_RW
 Location: CREDIT_PORTFOLIO.UDF
 Purpose:
   Calculates the Basel III IRB Risk Weight (RW) component of the capital
   requirement formula.
 Notes:
   - Returns NUMBER(10,8).
-  - Risk Weight represents the sensitivity of capital requirements to borrower
+  - Risk Weight represents the sensitivity of capital requirements to customer's
     default probability and asset correlation, and is derived from the Vasicek
     single-factor model:
     RW = ((1 - R) / (1 - R * b)) *
@@ -24,31 +24,34 @@ USE WAREHOUSE DBT_WH;
 USE DATABASE CREDIT_PORTFOLIO;
 USE SCHEMA UDF;
 
-CREATE OR REPLACE FUNCTION CREDIT_PORTFOLIO.UDF.udf_Get_RW(pd FLOAT, r FLOAT, b FLOAT)
-RETURNS FLOAT
-LANGUAGE SQL
-AS
-$$
- ((1 - r) / (1 - r * b)) * POWER(
-            UTIL_DB.PUBLIC.NORMINV(pd) * SQRT(r) +
-            UTIL_DB.PUBLIC.NORMINV(0.999) * SQRT(1 - r)
-         , 2)
+CREATE OR REPLACE FUNCTION CREDIT_PORTFOLIO.UDF.UDF_CALC_RW
+      (pd FLOAT
+      ,r FLOAT
+      ,b FLOAT
+      )
+    RETURNS FLOAT
+    LANGUAGE SQL
+    AS
+    $$
+    ((1 - r) / (1 - r * b)) *
+    POWER(
+          CREDIT_PORTFOLIO.UDF.UDF_GET_NORMINV(pd)    * SQRT(r) +
+          CREDIT_PORTFOLIO.UDF.UDF_GET_NORMINV(0.999) * SQRT(1 - r)
+          ,2
+         )
+    $$;
 
-$$;
-
-COMMENT ON FUNCTION CREDIT_PORTFOLIO.UDF.udf_Get_RW(FLOAT, FLOAT, FLOAT)
+COMMENT ON FUNCTION CREDIT_PORTFOLIO.UDF.UDF_CALC_RW(FLOAT, FLOAT, FLOAT)
     IS 'Calculates the Basel III IRB Risk Weight (RW) portion of the capital factor used in capital requirement formulas.';
 
 /*-----------------------------------
 Unit Tests
 -----------------------------------*/
-SELECT CREDIT_PORTFOLIO.UDF.udf_Get_RW(0.001, 0.24, 1.0);
+SELECT UDF_CALC_RW(0.001, 0.24, 1.0);
 -- Expected: Small RW value (~0.038)
 
-SELECT udf_Get_RW(0.025, 0.15, 1.0);
+SELECT UDF_CALC_RW(0.025, 0.15, 1.0);
 -- Expected: Mid-range RW value (~0.154)
 
-SELECT udf_Get_RW(0.20, 0.12, 1.0);
+SELECT UDF_CALC_RW(0.20, 0.12, 1.0);
 -- Expected: Larger RW value (~0.240)
-
-SELECT NORMAL_INV(.5);

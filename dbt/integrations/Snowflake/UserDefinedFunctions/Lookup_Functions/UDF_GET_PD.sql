@@ -2,7 +2,7 @@
 Function: UDF_GET_PD
 Location: CREDIT_PORTFOLIO.UDF
 Purpose:
-  Probability of Default (PD): loan default probability based on borrowers credit score at origination.
+  Probability of Default (PD): loan default probability based on customer's credit score at origination.
 Notes:
   - Returns NUMBER(10,8).
   - Pulls PD values from CREDIT_PORTFOLIO.REF.PD based on credit subgrade.
@@ -14,24 +14,20 @@ USE WAREHOUSE DBT_WH;
 USE DATABASE CREDIT_PORTFOLIO;
 USE SCHEMA UDF;
 
-CREATE OR REPLACE FUNCTION udf_Get_PD
+CREATE OR REPLACE FUNCTION UDF_GET_PD
       (input_subgrade VARCHAR(2)
       )
-RETURNS NUMBER(10,8)
-LANGUAGE SQL
-AS
-$$
-COALESCE(
-         (SELECT MIN(PD)
-            FROM CREDIT_PORTFOLIO.REF.PD
-           WHERE CREDIT_SUBGRADE = input_subgrade
-         )
-        ,0.99999999
-        )
+    RETURNS NUMBER(10,8)
+    LANGUAGE SQL
+    AS
+    $$
+    SELECT MIN(PD)
+      FROM CREDIT_PORTFOLIO.REF.PD
+     WHERE CREDIT_SUBGRADE = input_subgrade
 $$;
 
 COMMENT ON FUNCTION CREDIT_PORTFOLIO.UDF.udf_Get_PD(VARCHAR(2))
-     IS 'Probability of Default (PD): loan default probability based on borrowers credit score at origination.';
+     IS 'Probability of Default (PD): loan default probability based on customers credit score at origination.';
 
 /*-----------------------------------
 Unit Tests
@@ -45,5 +41,5 @@ SELECT udf_Get_PD('G5');
 -- Returned: 0.30000000
 
 SELECT udf_Get_PD('Z1');
--- Expected: 0.99999999
--- Returned: 0.99999999
+-- Expected: NULL
+-- Returned: NULL

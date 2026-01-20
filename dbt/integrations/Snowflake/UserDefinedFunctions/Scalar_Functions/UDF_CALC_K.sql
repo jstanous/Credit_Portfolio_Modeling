@@ -1,5 +1,5 @@
 /*------------------------------------------------------------------------------
-Function: UDF_GET_K
+Function: UDF_CALC_K
 Location: CREDIT_PORTFOLIO.UDF
 Purpose:
   Basel III IRB Capital Factor (K) to determine risk-weighted capital requirements.
@@ -14,7 +14,7 @@ USE WAREHOUSE DBT_WH;
 USE DATABASE CREDIT_PORTFOLIO;
 USE SCHEMA UDF;
 
-CREATE OR REPLACE FUNCTION CREDIT_PORTFOLIO.UDF.UDF_GET_K
+CREATE OR REPLACE FUNCTION CREDIT_PORTFOLIO.UDF.UDF_CALC_K
       (LGD NUMBER(10,8)
       ,RW NUMBER(10,8)
       )
@@ -22,27 +22,27 @@ CREATE OR REPLACE FUNCTION CREDIT_PORTFOLIO.UDF.UDF_GET_K
     LANGUAGE SQL
     AS
     $$
-        LGD * RW
+    LGD * RW
     $$;
 
-COMMENT ON FUNCTION CREDIT_PORTFOLIO.UDF.UDF_GET_K(NUMBER(10,8), NUMBER(10,8))
+COMMENT ON FUNCTION CREDIT_PORTFOLIO.UDF.UDF_CALC_K(NUMBER(10,8), NUMBER(10,8))
      IS 'Gets the Retail Form of the Basel III IRB Capital Factor (K)';
 
 /*-----------------------------------
 Unit Tests
 -----------------------------------*/
-SELECT UDF_GET_K(0.45, 0.12);  
+SELECT UDF_CALC_K(0.45, 0.12);  
 -- Expected: 0.0540000000
 -- Returned: 0.054000000000
 
-SELECT UDF_GET_K(0.50, 0.20);  
+SELECT UDF_CALC_K(0.50, 0.20);  
 -- Expected: 0.1000000000
 -- Returned: 0.100000000000
 
-SELECT UDF_GET_K(0.25, 0.08);  
+SELECT UDF_CALC_K(0.25, 0.08);  
 -- Expected: 0.0200000000
 -- Returned: 0.020000000000
 
-SELECT UDF_GET_K(0.90, 0.50);  
+SELECT UDF_CALC_K(0.90, 0.50);  
 -- Expected: 0.4500000000
 -- Returned: 0.450000000000

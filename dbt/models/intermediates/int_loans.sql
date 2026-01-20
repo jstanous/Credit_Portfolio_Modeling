@@ -1,5 +1,5 @@
 SELECT loans.loan_id
-     , loans.borrower_id
+     , loans.customer_id
      , loans.loan_origination_date
      , DATEADD(month, loans.loan_term, loans.loan_origination_date) as loan_maturity_date
      , loans.loan_amount

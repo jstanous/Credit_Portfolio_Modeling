@@ -1,6 +1,6 @@
 models:
-  - name: eph_loans
-    description: "{{ doc('model__eph_loans') }}"
+  - name: int_loans
+    description: "{{ doc('model__int_loans') }}"
     columns:
       - name: loan_id
         data_type: number

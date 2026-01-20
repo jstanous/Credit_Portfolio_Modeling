@@ -13,20 +13,16 @@ USE WAREHOUSE DBT_WH;
 USE DATABASE CREDIT_PORTFOLIO;
 USE SCHEMA UDF;
 
-CREATE OR REPLACE FUNCTION udf_Get_LGD
+CREATE OR REPLACE FUNCTION UDF_GET_LGD
       (input_collateral_type VARCHAR(25)
       )
     RETURNS NUMBER(10,8)
     LANGUAGE SQL
     AS
     $$
-    COALESCE(
-             (SELECT MIN(LGD)
-                FROM CREDIT_PORTFOLIO.REF.LGD
-               WHERE COLLATERAL_TYPE = input_collateral_type
-             )
-            ,0.99999999
-            )
+    SELECT MIN(LGD)
+      FROM CREDIT_PORTFOLIO.REF.LGD
+     WHERE COLLATERAL_TYPE = input_collateral_type
     $$;
 
 COMMENT ON FUNCTION CREDIT_PORTFOLIO.UDF.udf_Get_LGD(VARCHAR(25))
@@ -44,5 +40,5 @@ SELECT udf_Get_LGD('Unsecured');
 -- Returned: 0.75000000
 
 SELECT udf_Get_LGD('Baseball Cards');
--- Expected: 0.99999999
--- Returned: 0.99999999
+-- Expected: NULL
+-- Returned: NULL
