@@ -128,48 +128,48 @@ The indicated use for loans.
 ** Use case: ** Indentify the purpose of the loan.  
 {% enddocs %}  
 
-<!-- Borrower Attributes -->
-{% docs column__borrower_id %}  
-Unique identifier for the borrower.  
+<!-- Customer Attributes -->
+{% docs column__cpm_customer_id %}  
+Unique identifier for the customer.  
   
-** Business Name: ** Borrower Id  
+** Business Name: ** Customer Id  
 ** Source: ** loans.member_id  
-** Role: ** Primary Key for Borrower records  
+** Role: ** Primary Key for customer records  
   
-** Use case: ** Indentify unique borrowers.  
+** Use case: ** Indentify unique customers.  
 {% enddocs %}  
 
-{% docs column__borrower_type %}  
-The type of the borrowers.  
+{% docs column__customer_type %}  
+The type of the customers.  
   
-** Business Name: ** Borrower Type  
+** Business Name: ** Customer Type  
 ** Source: ** loans.application_type  
   
-** Use case: ** Indentify the type of borrower.  
+** Use case: ** Indentify the type of customer.  
 
 ** Values: **  
- - INDIVIDUAL — The borrower is a individual person.
+ - INDIVIDUAL — The customer is a individual person.
 {% enddocs %}  
 
-{% docs column__borrower_state %}  
-The state of residence for the borrowers.  
+{% docs column__customer_state %}  
+The state of residence for the customers.  
   
-** Business Name: ** Borrower State  
+** Business Name: ** Customer State  
 ** Source: ** loans.address_state  
   
-** Use case: ** Indentify the state of residence for the borrower.  
+** Use case: ** Indentify the state of residence for the customer.  
 
 ** Values: **  
  - Must be a valid 2 character state code
 {% enddocs %}  
 
-{% docs column__borrower_credit_grade %}  
-The credit grade for the borrowers.  
+{% docs column__customer_credit_grade %}  
+The credit grade for the customers.  
   
 ** Business Name: ** Credit Grade  
 ** Source: ** loans.grade  
   
-** Use case: ** Indentify the credit grade for the borrower.  
+** Use case: ** Indentify the credit grade for the customer.  
 
 ** Values: **  
  - A — Exceptional
@@ -181,79 +181,79 @@ The credit grade for the borrowers.
  - G — High Risk
 {% enddocs %}  
 
-{% docs column__borrower_credit_subgrade %}  
-The credit subgrade of the borrowers.
+{% docs column__customer_credit_subgrade %}  
+The credit subgrade of the customers.
 
 ** Business Name: ** Credit Subgrade  
 ** Source: ** loans.subgrade  
   
-** Use case: ** Indentify the credit subgrade for the borrower.  
+** Use case: ** Indentify the credit subgrade for the customer.  
 
 ** Values: **  
  - 1-5 tiers within each credit grade.
 {% enddocs %}  
 
-{% docs column__borrower_last_credit_report_date %}  
-The date of the last credit report pull for the borrowers.
+{% docs column__customer_last_credit_report_date %}  
+The date of the last credit report pull for the customers.
 
 ** Business Name: ** Last Credit Report Date  
 ** Source: ** loans.last_credit_pull_date  
   
-** Use case: ** Indentify the date of the last credit report pull for the borrower.  
+** Use case: ** Indentify the date of the last credit report pull for the customer.  
 {% enddocs %}  
 
-{% docs column__borrower_annual_income %}  
-The annual income for the borrowers.
+{% docs column__customer_annual_income %}  
+The annual income for the customers.
 
 ** Business Name: ** Annual Income  
 ** Source: ** loans.annual_income  
   
-** Use case: ** Indentify the date of the last credit report pull for the borrower.  
+** Use case: ** Indentify the date of the last credit report pull for the customer.  
 {% enddocs %}  
 
-{% docs column__borrower_debt_to_income %}  
-The debt-to-income ratio for the borrowers.
+{% docs column__customer_debt_to_income %}  
+The debt-to-income ratio for the customers.
 
 ** Business Name: ** Debt-to-Income  
 ** Source: ** loans.dti  
   
-** Use case: ** Indentify the ratio of debt to income for the borrower.  
+** Use case: ** Indentify the ratio of debt to income for the customer.  
 {% enddocs %}  
 
-{% docs column__borrower_total_accounts %}  
-The total number of accounts for the borrowers.
+{% docs column__customer_total_accounts %}  
+The total number of accounts for the customers.
 
 ** Business Name: ** Total Accounts  
 ** Source: ** loans.total_acc  
   
-** Use case: ** Indentify the total number of accounts for the borrower.  
+** Use case: ** Indentify the total number of accounts for the customer.  
 {% enddocs %}  
 
-{% docs column__borrower_employment_tenure %}  
-The length of time of current employment for the borrowers.
+{% docs column__customer_employment_tenure %}  
+The length of time of current employment for the customers.
 
 ** Business Name: ** Employment Tenure  
 ** Source: ** loans.emp_length  
   
-** Use case: ** Indentify the length of time of current employment for the borrower.  
+** Use case: ** Indentify the length of time of current employment for the customer.  
 {% enddocs %}  
 
-{% docs column__borrower_employment_title %}  
-The current employment title for the borrowers.
+{% docs column__customer_employment_title %}  
+The current employment title for the customers.
 
 ** Business Name: ** Employment Title  
 ** Source: ** loans.emp_title  
   
-** Use case: ** Indentify the employment title for the borrower.  
+** Use case: ** Indentify the employment title for the customer.  
 {% enddocs %}  
 
-{% docs column__borrower_residence_status %}  
-The situation of the residence for the borrowers.
+{% docs column__customer_residence_status %}  
+The situation of the residence for the customers.
 
 ** Business Name: ** Residence Status  
 ** Source: ** loans.home_ownership  
   
-** Use case: ** Indentify the residence situation for the borrower.  
+** Use case: ** Indentify the residence situation for the customer.  
 
 ** Values: **  
  - MORTGAGE — Pays a mortgage on current residence.  
@@ -263,11 +263,11 @@ The situation of the residence for the borrowers.
  - RENT — Rents current residence.
 {% enddocs %}  
 
-{% docs column__borrower_verification_status %}  
-The status of verification of information for the borrowers.
+{% docs column__customer_verification_status %}  
+The status of verification of information for the customers.
 
 ** Business Name: ** Verification Status  
 ** Source: ** loans.verification_status  
   
-** Use case: ** Indentify the information verification status for the borrower.  
+** Use case: ** Indentify the information verification status for the customer.  
 {% enddocs %}  

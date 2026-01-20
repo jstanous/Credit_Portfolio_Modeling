@@ -4,7 +4,7 @@ models:
     columns:
       - name: customer_id
         data_type: number
-        description: "{{ doc('column__customer_id') }}"
+        description: "{{ doc('column__cpm_customer_id') }}"
         data_tests:
           - not_null
           - unique

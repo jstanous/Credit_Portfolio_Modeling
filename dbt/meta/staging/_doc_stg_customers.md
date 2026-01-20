@@ -1,9 +1,9 @@
-{% docs model\_\_stg\_customers %}  
+{% docs model__stg_customers %}  
 Staging model for Customer data.  
 Separates Customer attributes from Loan attributes.
 Employs star schema methodology.
 
-\*\* Source: \*\* credit\_portfolio.raw.loans  
-\*\* Grain: \*\* One record per customer.  
+** Source: ** credit_portfolio.raw.loans  
+** Grain: ** One record per customer.  
 {% enddocs %}
 

@@ -25,20 +25,20 @@ CREATE OR REPLACE FUNCTION UDF_GET_LGD
      WHERE COLLATERAL_TYPE = input_collateral_type
     $$;
 
-COMMENT ON FUNCTION CREDIT_PORTFOLIO.UDF.udf_Get_LGD(VARCHAR(25))
+COMMENT ON FUNCTION CREDIT_PORTFOLIO.UDF.UDF_GET_LGD(VARCHAR(25))
      IS 'Gets the Loss Given Default (LGD): loss rate at loan default based on assets used to secure loan.';
 
 /*-----------------------------------
 Unit Tests
 -----------------------------------*/
-SELECT udf_Get_LGD('Property (Lien)');
+SELECT UDF_GET_LGD('Property (Lien)');
 -- Expected: 0.35000000
 -- Returned: 0.35000000
 
-SELECT udf_Get_LGD('Unsecured');
+SELECT UDF_GET_LGD('Unsecured');
 -- Expected: 0.75000000
 -- Returned: 0.75000000
 
-SELECT udf_Get_LGD('Baseball Cards');
+SELECT UDF_GET_LGD('Baseball Cards');
 -- Expected: NULL
 -- Returned: NULL

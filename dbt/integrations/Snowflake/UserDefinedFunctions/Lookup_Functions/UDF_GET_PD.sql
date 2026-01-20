@@ -26,20 +26,20 @@ CREATE OR REPLACE FUNCTION UDF_GET_PD
      WHERE CREDIT_SUBGRADE = input_subgrade
 $$;
 
-COMMENT ON FUNCTION CREDIT_PORTFOLIO.UDF.udf_Get_PD(VARCHAR(2))
+COMMENT ON FUNCTION CREDIT_PORTFOLIO.UDF.UDF_GET_PD(VARCHAR(2))
      IS 'Probability of Default (PD): loan default probability based on customers credit score at origination.';
 
 /*-----------------------------------
 Unit Tests
 -----------------------------------*/
-SELECT udf_Get_PD('A1');
+SELECT UDF_GET_PD('A1');
 -- Expected: 0.00020000
 -- Returned: 0.00020000
 
-SELECT udf_Get_PD('G5');
+SELECT UDF_GET_PD('G5');
 -- Expected: 0.30000000
 -- Returned: 0.30000000
 
-SELECT udf_Get_PD('Z1');
+SELECT UDF_GET_PD('Z1');
 -- Expected: NULL
 -- Returned: NULL

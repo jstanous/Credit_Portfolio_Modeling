@@ -24,32 +24,32 @@ sources:
               - not_null
           - name: address_state
             data_type: varchar
-            description: "{{ doc('column__borrower_state') }}"
+            description: "{{ doc('column__customer_state') }}"
             data_tests:
               - not_null
           - name: application_type
             data_type: varchar
-            description: "{{ doc('column__borrower_type') }}"
+            description: "{{ doc('column__customer_type') }}"
             data_tests:
               - not_null
           - name: emp_length
             data_type: varchar
-            description: "{{ doc('column__borrower_employment_tenure') }}"
+            description: "{{ doc('column__customer_employment_tenure') }}"
             data_tests:
               - not_null
           - name: emp_title
             data_type: varchar
-            description: "{{ doc('column__borrower_employment_title') }}"
+            description: "{{ doc('column__customer_employment_title') }}"
 #            data_tests:
 #              - not_null
           - name: grade
             data_type: varchar
-            description: "{{ doc('column__borrower_credit_grade') }}"
+            description: "{{ doc('column__customer_credit_grade') }}"
             data_tests:
               - not_null
           - name: home_ownership
             data_type: varchar
-            description: "{{ doc('column__borrower_residence_status') }}"
+            description: "{{ doc('column__customer_residence_status') }}"
             data_tests:
               - not_null
           - name: issue_date
@@ -59,7 +59,7 @@ sources:
               - not_null
           - name: last_credit_pull_date
             data_type: date
-            description: "{{ doc('column__borrower_last_credit_report_date') }}"
+            description: "{{ doc('column__customer_last_credit_report_date') }}"
             data_tests:
               - not_null
           - name: last_payment_date
@@ -79,7 +79,7 @@ sources:
               - not_null
           - name: member_id
             data_type: number
-            description: "{{ doc('column__borrower_id') }}"
+            description: "{{ doc('column__cpm_customer_id') }}"
             data_tests:
               - not_null
           - name: purpose
@@ -89,7 +89,7 @@ sources:
               - not_null
           - name: sub_grade
             data_type: varchar
-            description: "{{ doc('column__borrower_credit_subgrade') }}"
+            description: "{{ doc('column__customer_credit_subgrade') }}"
             data_tests:
               - not_null
           - name: term_length
@@ -104,17 +104,17 @@ sources:
               - not_null
           - name: verification_status
             data_type: varchar
-            description: "{{ doc('column__borrower_verification_status') }}"
+            description: "{{ doc('column__customer_verification_status') }}"
             data_tests:
               - not_null
           - name: annual_income
             data_type: number
-            description: "{{ doc('column__borrower_annual_income') }}"
+            description: "{{ doc('column__customer_annual_income') }}"
             data_tests:
               - not_null
           - name: dti
             data_type: number
-            description: "{{ doc('column__borrower_debt_to_income') }}"
+            description: "{{ doc('column__customer_debt_to_income') }}"
             data_tests:
               - not_null
           - name: installment
@@ -134,7 +134,7 @@ sources:
               - not_null
           - name: total_acc
             data_type: number
-            description: "{{ doc('column__borrower_total_accounts') }}"
+            description: "{{ doc('column__customer_total_accounts') }}"
             data_tests:
               - not_null
           - name: total_payment

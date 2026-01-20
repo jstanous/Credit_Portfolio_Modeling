@@ -64,9 +64,9 @@ models:
         description: "{{ doc('column__loan_purpose') }}"
         data_tests:
           - not_null
-    # Borrower Attributes
-      - name: borrower_id
+    # Customer Attributes
+      - name: customer_id
         data_type: number
-        description: "{{ doc('column__borrower_id') }}"
+        description: "{{ doc('column__cpm_customer_id') }}"
         data_tests:
           - not_null
