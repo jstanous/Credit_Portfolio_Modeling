@@ -4,8 +4,8 @@
 -- Wrapper macro for Snowflake COF Rate UDF
 -- Inputs:  Pricing Date, Pricing Term
 -- Returns: Cost Of Funds Rate (cof_rate)
-{% macro get_cof_rate(pricing_date, pricing_term) -%}
-credit_portfolio.udf.udf_get_cof_rate({{ pricing_date }}, {{ pricing_term }})
+{% macro get_cofrate(pricing_date, pricing_term) -%}
+credit_portfolio.udf.udf_get_cofrate({{ pricing_date }}, {{ pricing_term }})
 {%- endmacro %}
 
 -- Wrapper macro for Snowflake LGD UDF

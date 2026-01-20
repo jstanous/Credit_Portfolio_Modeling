@@ -32,24 +32,24 @@ CREATE OR REPLACE FUNCTION UDF_GET_COFRATE
      WHERE AS_OF_DATE = input_pricing_date
     $$;
 
-COMMENT ON FUNCTION CREDIT_PORTFOLIO.UDF.udf_Get_CofRate(DATE, INTEGER)
+COMMENT ON FUNCTION CREDIT_PORTFOLIO.UDF.UDF_GET_COFRATE(DATE, INTEGER)
      IS 'Determines the Cost of Funds rate used for market-based funding cost allocations.';
 
 /*-----------------------------------
 Unit Tests
 -----------------------------------*/
-SELECT udf_Get_CofRate('2021-06-01', 36);
+SELECT UDF_GET_COFRATE('2021-06-01', 36);
 --Expected: 0.00422500
 --Returned: 0.00422500
 
-SELECT udf_Get_CofRate('2021-06-01', 60);
+SELECT UDF_GET_COFRATE('2021-06-01', 60);
 --Expected: 0.00924000
 --Returned: 0.00924000
 
-SELECT udf_Get_CofRate('2021-06-01', 120);
+SELECT UDF_GET_COFRATE('2021-06-01', 120);
 --Expected: NULL
 --Returned: NULL
 
-SELECT udf_Get_CofRate('2022-06-01', 36);
+SELECT UDF_GET_COFRATE('2022-06-01', 36);
 --Expected: NULL
 --Returned: NULL
