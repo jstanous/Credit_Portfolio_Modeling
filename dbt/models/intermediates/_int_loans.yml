@@ -8,15 +8,15 @@ models:
         data_tests:
           - unique
           - not_null
-      - name: customer_id
+      - name: member_id
         data_type: number
-        description: "{{ doc('column__cpm_customer_id') }}"
+        description: "{{ doc('column__member_id') }}"
         data_tests:
           - not_null
           - relationships:
               arguments:
-                to: ref('stg_customers')
-                field: customer_id
+                to: ref('stg_members')
+                field: member_id
       - name: loan_origination_date
         data_type: date
         description: "{{ doc('column__loan_origination_date') }}"

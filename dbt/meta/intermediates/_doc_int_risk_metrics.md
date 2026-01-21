@@ -3,7 +3,7 @@ Intermediate model for Loan Risk Metrics data.
 Enriches Loan data with risk metrics.
 Employs star schema methodology.
 
-** Source: ** stg_loans, stg_borrowers  
+** Source: ** stg_loans, stg_members  
 ** Grain: ** One record per loan.  
 {% enddocs %}  
 
@@ -14,5 +14,5 @@ The percentage that represents the likelyhood of loan default.
 
 ** Use case: ** Identify the default probability for the loan.  
 
-** Logic: ** Jinja Macro: `get_PD('borrower_credit_subgrade')`  
+** Logic: ** Jinja Macro: `get_PD('member_credit_subgrade')`  
 {% enddocs %}  

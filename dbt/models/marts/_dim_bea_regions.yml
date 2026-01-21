@@ -1,0 +1,19 @@
+models:
+  - name: dim_bea_regions
+    description: "{{ doc('model__dim_bea_regions') }}"
+    columns:
+      - name: state_code
+        data_type: varchar
+        description: "{{ doc('column__state_cd') }}"
+        data_tests:
+          - not_null
+      - name: bea_division
+        data_type: varchar
+        description: "{{ doc('column__division') }}"
+        data_tests:
+          - not_null
+      - name: bea_region
+        data_type: varchar
+        description: "{{ doc('column__region') }}"
+        data_tests:
+          - not_null

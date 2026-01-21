@@ -1,0 +1,68 @@
+models:
+  - name: dim_members
+    description: "{{ doc('model__dim_members') }}"
+    columns:
+      - name: member_id
+        data_type: number
+        description: "{{ doc('column__member_id') }}"
+        data_tests:
+          - not_null
+          - unique
+      - name: member_type
+        data_type: varchar
+        description: "{{ doc('column__member_type') }}"
+        data_tests:
+          - not_null
+      - name: member_state
+        data_type: varchar
+        description: "{{ doc('column__member_state') }}"
+        data_tests:
+          - not_null
+      - name: credit_grade
+        data_type: varchar
+        description: "{{ doc('column__member_credit_grade') }}"
+        data_tests:
+          - not_null
+      - name: credit_subgrade
+        data_type: varchar
+        description: "{{ doc('column__member_credit_subgrade') }}"
+        data_tests:
+          - not_null
+      - name: last_credit_report_date
+        data_type: date
+        description: "{{ doc('column__member_last_credit_report_date') }}"
+        data_tests:
+          - not_null
+      - name: annual_income
+        data_type: number
+        description: "{{ doc('column__member_annual_income') }}"
+        data_tests:
+          - not_null
+      - name: debt_to_income
+        data_type: number
+        description: "{{ doc('column__member_debt_to_income') }}"
+        data_tests:
+          - not_null
+      - name: total_accounts
+        data_type: number
+        description: "{{ doc('column__member_total_accounts') }}"
+        data_tests:
+          - not_null
+      - name: employment_tenure
+        data_type: varchar
+        description: "{{ doc('column__member_employment_tenure') }}"
+        data_tests:
+          - not_null
+      - name: employment_title
+        data_type: varchar
+        description: "{{ doc('column__member_employment_title') }}"
+      - name: residence_status
+        data_type: varchar
+        description: "{{ doc('column__member_residence_status') }}"
+        data_tests:
+          - not_null
+      - name: verification_status
+        data_type: varchar
+        description: "{{ doc('column__member_verification_status') }}"
+        data_tests:
+          - not_null

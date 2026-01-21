@@ -13,5 +13,5 @@ SELECT id                       AS loan_id
      , total_payment            AS loan_total_payment_amount
      , loan_status              AS loan_status
      , purpose                  AS loan_purpose
-     , member_id                AS customer_id
+     , member_id                AS member_id
   FROM {{source('credit_portfolio', 'loans') }}

@@ -64,6 +64,11 @@ Steps:
        - This format supports ingestion of workshop files with legacy formatting
        -  This script is designed for public exemplars and can be reused across Snowflake workshops and dbt pipelines.
 
+  7. Create Addional Reference Tables
+     - Reference Data Tables
+       - RISK_SEGMENT: Standard Risk Segment data.
+       - REGION: BEA and Federal Reserve regionalization data.
+
 Governance Notes:
   - Role usage alternates between SYSADMIN (object creation) and SECURITYADMIN (grants),
     demonstrating least-privilege principles.
@@ -197,3 +202,87 @@ CREATE OR REPLACE FILE FORMAT UTIL_DB.PUBLIC.ONE_HEADERROW_COMMA_DELIM_DBLQUOTE_
    FIELD_OPTIONALLY_ENCLOSED_BY = '"',
    TRIM_SPACE = TRUE
    COMMENT = 'File Format: 1 Header Row, Comma delimited, DoubleQuote Enclosed';
+
+
+-- 6. Create File Format in UTLI_DB
+CREATE TABLE IF NOT EXISTS CREDIT_PORTFOLIO.REF.RISK_SEGMENTS
+      (
+       CREDIT_GRADE CHAR(1),
+       RISK_SEGMENT VARCHAR(25)
+      )
+      COMMENT = 'Reference Table for Risk Segments data';
+
+INSERT INTO CREDIT_PORTFOLIO.REF.RISK_SEGMENTS
+   VALUES
+      ('A','Super-Prime'),
+      ('B','Prime'),
+      ('C','Near-Prime'),
+      ('D','Sub-Prime'),
+      ('E','Sub-Prime'),
+      ('F','Deep Sub-Prime'),
+      ('G','Deep Sub-Prime');
+
+
+CREATE TABLE IF NOT EXISTS CREDIT_PORTFOLIO.REF.REGIONS
+      (
+       STATE_CD CHAR(2),
+       DIVISION VARCHAR(50),
+       REGION VARCHAR(50),
+       FED_DISTRICT NUMBER(2,0),
+       FED_DISTRICT_NAME VARCHAR(50)
+      )
+      COMMENT = 'Reference Table for regionalization data';
+
+INSERT INTO CREDIT_PORTFOLIO.REF.REGIONS
+   VALUES
+      ('ME','New England','Northeast',1,'Boston'),
+      ('NH','New England','Northeast',1,'Boston'),
+      ('VT','New England','Northeast',1,'Boston'),
+      ('MA','New England','Northeast',1,'Boston'),
+      ('RI','New England','Northeast',1,'Boston'),
+      ('CT','New England','Northeast',1,'Boston'),
+      ('NY','Mideast','Northeast',2,'New York'),
+      ('NJ','Mideast','Northeast',2,'New York'),
+      ('PA','Mideast','Northeast',3,'Philadelphia'),
+      ('DE','Mideast','Northeast',3,'Philadelphia'),
+      ('MD','Mideast','Northeast',5,'Richmond'),
+      ('DC','Mideast','Northeast',5,'Richmond'),
+      ('OH','Great Lakes','Midwest',4,'Cleveland'),
+      ('IN','Great Lakes','Midwest',7,'Chicago'),
+      ('IL','Great Lakes','Midwest',7,'Chicago'),
+      ('MI','Great Lakes','Midwest',7,'Chicago'),
+      ('WI','Great Lakes','Midwest',7,'Chicago'),
+      ('MN','Plains','Midwest',9,'Minneapolis'),
+      ('IA','Plains','Midwest',7,'Chicago'),
+      ('MO','Plains','Midwest',8,'St. Louis'),
+      ('ND','Plains','Midwest',9,'Minneapolis'),
+      ('SD','Plains','Midwest',9,'Minneapolis'),
+      ('NE','Plains','Midwest',10,'Kansas City'),
+      ('KS','Plains','Midwest',10,'Kansas City'),
+      ('VA','Southeast','South',5,'Richmond'),
+      ('WV','Southeast','South',5,'Richmond'),
+      ('NC','Southeast','South',5,'Richmond'),
+      ('SC','Southeast','South',5,'Richmond'),
+      ('GA','Southeast','South',6,'Atlanta'),
+      ('FL','Southeast','South',6,'Atlanta'),
+      ('TN','Southeast','South',6,'Atlanta'),
+      ('AL','Southeast','South',6,'Atlanta'),
+      ('MS','Southeast','South',6,'Atlanta'),
+      ('AR','Southeast','South',8,'St. Louis'),
+      ('KY','Southeast','South',8,'St. Louis'),
+      ('LA','Southeast','South',11,'Dallas'),
+      ('OK','Southwest','South',10,'Kansas City'),
+      ('TX','Southwest','South',11,'Dallas'),
+      ('MT','Rocky Mountain','West',9,'Minneapolis'),
+      ('ID','Rocky Mountain','West',12,'San Francisco'),
+      ('WY','Rocky Mountain','West',10,'Kansas City'),
+      ('CO','Rocky Mountain','West',10,'Kansas City'),
+      ('NM','Rocky Mountain','West',11,'Dallas'),
+      ('AZ','Rocky Mountain','West',12,'San Francisco'),
+      ('UT','Rocky Mountain','West',12,'San Francisco'),
+      ('NV','Far West','West',12,'San Francisco'),
+      ('WA','Far West','West',12,'San Francisco'),
+      ('OR','Far West','West',12,'San Francisco'),
+      ('CA','Far West','West',12,'San Francisco'),
+      ('AK','Far West','West',12,'San Francisco'),
+      ('HI','Far West','West',12,'San Francisco');

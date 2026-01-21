@@ -6,14 +6,15 @@ Employs star schema methodology.
 
 ** Source: ** stg_loans  
 ** Grain: ** One record per loan.  
-{% enddocs %}  
+{% enddocs %}
 
 {% docs column__loan_maturity_date %}  
-The date of the end of the loans.  
+The date of the end of the loans.
 
-** Business Name: ** Maturity Date  
+** Business Name: ** Maturity Date
 
 ** Use case: ** Identify the date of maturity for the loan.
 
 ** Logic: ** DATEADD(month, loan_term, loan_origination_date)  
-{% enddocs %}  
+{% enddocs %}
+

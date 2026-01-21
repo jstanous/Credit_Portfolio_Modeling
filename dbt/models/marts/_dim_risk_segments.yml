@@ -1,0 +1,15 @@
+models:
+  - name: dim_risk_segments
+    description: "{{ doc('model__dim_risk_segments') }}"
+    # Loan Attributes
+    columns:
+      - name: credit_grade
+        data_type: varchar
+        description: "{{ doc('column__credit_grade') }}"
+        data_tests:
+          - not_null
+      - name: risk_segment
+        data_type: varchar
+        description: "{{ doc('column__risk_segment') }}"
+        data_tests:
+          - not_null

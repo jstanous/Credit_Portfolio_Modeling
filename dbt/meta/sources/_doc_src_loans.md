@@ -5,7 +5,7 @@ Copy of the 2021 Credit Portfolio data.
 {% docs table__loans %}  
 Loan Summary records for the 2021 Credit Portfolio.  
 
-** Source: ** raw.loans  
+** Source: ** credit_portfolio.raw.loans  
 ** Grain: ** One record per loan.  
 {% enddocs %}  
 
@@ -14,46 +14,46 @@ Loan Summary records for the 2021 Credit Portfolio.
 Unique identifier for the loan record.  
   
 ** Business Name: ** Loan Id  
-** Source: ** loans.id  
+** Source: ** credit_portfolio.raw.loans.id  
 ** Role: ** Primary Key  
   
-** Use case: ** Indentify unique loans.  
+** Use case: ** Identify unique loans.  
 {% enddocs %}  
 
 {% docs column__loan_origination_date %}  
 Date of origination for the loan record.  
 
 ** Business Name: ** Origination Date  
-** Source: ** loans.issue_date  
+** Source: ** credit_portfolio.raw.loans.issue_date  
 
-** Use case: ** Indentify the date the loans started.  
+** Use case: ** Identify the date the loans started.  
 {% enddocs %}  
 
 {% docs column__loan_amount %}  
 Original funded amount of the loan record.  
 
 ** Business Name: ** Loan Amount  
-** Source: ** loans.loan_amount  
+** Source: ** credit_portfolio.raw.loans.loan_amount  
 
-** Use case: ** Indentify the initial amount of the loan.  
+** Use case: ** Identify the initial amount of the loan.  
 {% enddocs %}  
 
 {% docs column__loan_term %}  
 The length of the loan in units designated by Term Type.  
 
 ** Business Name: ** Loan Term  
-** Source: ** loans.term_length  
+** Source: ** credit_portfolio.raw.loans.term_length  
 
-** Use case: ** Indentify the initial length of the loan.  
+** Use case: ** Identify the initial length of the loan.  
 {% enddocs %}  
 
 {% docs column__loan_term_type %}  
 The unit for the loan term.  
 
 ** Business Name: ** Loan Term Type  
-** Source: ** loans.length_type  
+** Source: ** credit_portfolio.raw.loans.length_type  
 
-** Use case: ** Indentify the unit of length of the loan term.  
+** Use case: ** Identify the unit of length of the loan term.  
 
 ** Values: **  
  - months  
@@ -63,54 +63,54 @@ The unit for the loan term.
 The annual interest rate applied to the loan balance.  
 
 ** Business Name: ** Interest Rate  
-** Source: ** loans.int_rate  
+** Source: ** credit_portfolio.raw.loans.int_rate  
 
-** Use case: ** Indentify the annual interest rate for the loans.  
+** Use case: ** Identify the annual interest rate for the loans.  
 {% enddocs %}  
 
 {% docs column__loan_payment_amount %}  
 The monthly payment amount of the loan.  
 
 ** Business Name: ** Payment Amount  
-** Source: ** loans.installment  
+** Source: ** credit_portfolio.raw.loans.installment  
 
-** Use case: ** Indentify the monthly payment amounts for the loans.  
+** Use case: ** Identify the monthly payment amounts for the loans.  
 {% enddocs %}  
 
 {% docs column__loan_last_payment_date %}  
 The date of the last monthly payment for the loan.  
 
 ** Business Name: ** Last Payment Date  
-** Source: ** loans.last_payment_date  
+** Source: ** credit_portfolio.raw.loans.last_payment_date  
 
-** Use case: ** Indentify the date of the last payment made for the loans.  
+** Use case: ** Identify the date of the last payment made for the loans.  
 {% enddocs %}  
 
 {% docs column__loan_next_payment_date %}  
 The date the next monthly payment is due for the loan.  
 
 ** Business Name: ** Next Payment Date  
-** Source: ** loans.next_payment_date  
+** Source: ** credit_portfolio.raw.loans.next_payment_date  
 
-** Use case: ** Indentify the date the next payment is due for the loans.  
+** Use case: ** Identify the date the next payment is due for the loans.  
 {% enddocs %}  
 
 {% docs column__loan_total_payment_amount %}  
-The total amount of payments to made on the loan.  
+The total amount of loan payments.  
 
 ** Business Name: ** Total Payment Amount  
-** Source: ** loans.total_payment  
+** Source: ** credit_portfolio.raw.loans.total_payment  
 
-** Use case: ** Indentify the total payment amount for the loans.  
+** Use case: ** Identify the total payment amount for the loans.  
 {% enddocs %}  
 
 {% docs column__loan_status %}  
 The status of the loans.  
 
 ** Business Name: ** Loan Status  
-** Source: ** loans.loan_status  
+** Source: ** credit_portfolio.raw.loans.loan_status  
 
-** Use case: ** Indentify the status of the loan.  
+** Use case: ** Identify the status of the loan.  
 
 ** Values: **  
  - Charged Off — Delinquent loan written off
@@ -122,54 +122,54 @@ The status of the loans.
 The indicated use for loans.  
 
 ** Business Name: ** Loan Purpose  
-** Source: ** loans.purpose  
+** Source: ** credit_portfolio.raw.loans.purpose  
 ** Role: ** Foreign Key to ref.loan_purpose.loan_purpose.  
 
-** Use case: ** Indentify the purpose of the loan.  
+** Use case: ** Identify the purpose of the loan.  
 {% enddocs %}  
 
-<!-- Customer Attributes -->
-{% docs column__cpm_customer_id %}  
-Unique identifier for the customer.  
+<!-- Member Attributes -->
+{% docs column__member_id %}  
+Unique identifier for the member.  
   
-** Business Name: ** Customer Id  
-** Source: ** loans.member_id  
-** Role: ** Primary Key for customer records  
+** Business Name: ** Member Id  
+** Source: ** credit_portfolio.raw.loans.member_id  
+** Role: ** Primary Key for member records  
   
-** Use case: ** Indentify unique customers.  
+** Use case: ** Identify unique members.  
 {% enddocs %}  
 
-{% docs column__customer_type %}  
-The type of the customers.  
+{% docs column__member_type %}  
+The type of the members.  
   
-** Business Name: ** Customer Type  
-** Source: ** loans.application_type  
+** Business Name: ** Member Type  
+** Source: ** credit_portfolio.raw.loans.application_type  
   
-** Use case: ** Indentify the type of customer.  
+** Use case: ** Identify the type of member.  
 
 ** Values: **  
- - INDIVIDUAL — The customer is a individual person.
+ - INDIVIDUAL — The member is an individual person.
 {% enddocs %}  
 
-{% docs column__customer_state %}  
-The state of residence for the customers.  
+{% docs column__member_state %}  
+The state of residence for the members.  
   
-** Business Name: ** Customer State  
-** Source: ** loans.address_state  
+** Business Name: ** Member State  
+** Source: ** credit_portfolio.raw.loans.address_state  
   
-** Use case: ** Indentify the state of residence for the customer.  
+** Use case: ** Identify the state of residence for the member.  
 
 ** Values: **  
  - Must be a valid 2 character state code
 {% enddocs %}  
 
-{% docs column__customer_credit_grade %}  
-The credit grade for the customers.  
+{% docs column__member_credit_grade %}  
+The credit grade for the members.  
   
 ** Business Name: ** Credit Grade  
-** Source: ** loans.grade  
+** Source: ** credit_portfolio.raw.loans.grade  
   
-** Use case: ** Indentify the credit grade for the customer.  
+** Use case: ** Identify the credit grade for the member.  
 
 ** Values: **  
  - A — Exceptional
@@ -181,93 +181,93 @@ The credit grade for the customers.
  - G — High Risk
 {% enddocs %}  
 
-{% docs column__customer_credit_subgrade %}  
-The credit subgrade of the customers.
+{% docs column__member_credit_subgrade %}  
+The credit subgrade of the members.
 
 ** Business Name: ** Credit Subgrade  
-** Source: ** loans.subgrade  
+** Source: ** credit_portfolio.raw.loans.subgrade  
   
-** Use case: ** Indentify the credit subgrade for the customer.  
+** Use case: ** Identify the credit subgrade for the member.  
 
 ** Values: **  
- - 1-5 tiers within each credit grade.
+ - Numeric tiers (1-5) within each credit grade.
 {% enddocs %}  
 
-{% docs column__customer_last_credit_report_date %}  
-The date of the last credit report pull for the customers.
+{% docs column__member_last_credit_report_date %}  
+The date of the last credit report pull for the members.
 
 ** Business Name: ** Last Credit Report Date  
-** Source: ** loans.last_credit_pull_date  
+** Source: ** credit_portfolio.raw.loans.last_credit_pull_date  
   
-** Use case: ** Indentify the date of the last credit report pull for the customer.  
+** Use case: ** Identify the date of the last credit report pull for the member.  
 {% enddocs %}  
 
-{% docs column__customer_annual_income %}  
-The annual income for the customers.
+{% docs column__member_annual_income %}  
+The annual income for the members.
 
 ** Business Name: ** Annual Income  
-** Source: ** loans.annual_income  
+** Source: ** credit_portfolio.raw.loans.annual_income  
   
-** Use case: ** Indentify the date of the last credit report pull for the customer.  
+** Use case: ** Identify the date of the last credit report pull for the member.  
 {% enddocs %}  
 
-{% docs column__customer_debt_to_income %}  
-The debt-to-income ratio for the customers.
+{% docs column__member_debt_to_income %}  
+The debt-to-income ratio for the members.
 
 ** Business Name: ** Debt-to-Income  
-** Source: ** loans.dti  
+** Source: ** credit_portfolio.raw.loans.dti  
   
-** Use case: ** Indentify the ratio of debt to income for the customer.  
+** Use case: ** Identify the ratio of debt to income for the member.  
 {% enddocs %}  
 
-{% docs column__customer_total_accounts %}  
-The total number of accounts for the customers.
+{% docs column__member_total_accounts %}  
+The total number of accounts for the members.
 
 ** Business Name: ** Total Accounts  
-** Source: ** loans.total_acc  
+** Source: ** credit_portfolio.raw.loans.total_acc  
   
-** Use case: ** Indentify the total number of accounts for the customer.  
+** Use case: ** Identify the total number of accounts for the member.  
 {% enddocs %}  
 
-{% docs column__customer_employment_tenure %}  
-The length of time of current employment for the customers.
+{% docs column__member_employment_tenure %}  
+The length of time of current employment for the members.
 
 ** Business Name: ** Employment Tenure  
-** Source: ** loans.emp_length  
+** Source: ** credit_portfolio.raw.loans.emp_length  
   
-** Use case: ** Indentify the length of time of current employment for the customer.  
+** Use case: ** Identify the length of time of current employment for the member.  
 {% enddocs %}  
 
-{% docs column__customer_employment_title %}  
-The current employment title for the customers.
+{% docs column__member_employment_title %}  
+The current employment title for the members.
 
 ** Business Name: ** Employment Title  
-** Source: ** loans.emp_title  
+** Source: ** credit_portfolio.raw.loans.emp_title  
   
-** Use case: ** Indentify the employment title for the customer.  
+** Use case: ** Identify the employment title for the member.  
 {% enddocs %}  
 
-{% docs column__customer_residence_status %}  
-The situation of the residence for the customers.
+{% docs column__member_residence_status %}  
+The situation of the residence for the members.
 
 ** Business Name: ** Residence Status  
-** Source: ** loans.home_ownership  
+** Source: ** credit_portfolio.raw.loans.home_ownership  
   
-** Use case: ** Indentify the residence situation for the customer.  
+** Use case: ** Identify the residence situation for the member.  
 
 ** Values: **  
  - MORTGAGE — Pays a mortgage on current residence.  
- - NONE — Unkown residence situation.  
+ - NONE — Unknown residence situation.  
  - OTHER —  Other residence situation.
  - OWN — Owns current residence.
  - RENT — Rents current residence.
 {% enddocs %}  
 
-{% docs column__customer_verification_status %}  
-The status of verification of information for the customers.
+{% docs column__member_verification_status %}  
+The status of verification of information for the members.
 
 ** Business Name: ** Verification Status  
-** Source: ** loans.verification_status  
+** Source: ** credit_portfolio.raw.loans.verification_status  
   
-** Use case: ** Indentify the information verification status for the customer.  
+** Use case: ** Identify the information verification status for the member.  
 {% enddocs %}  

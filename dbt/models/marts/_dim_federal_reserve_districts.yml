@@ -1,0 +1,19 @@
+models:
+  - name: dim_federal_reserve_districts
+    description: "{{ doc('model__dim_federal_reserve_districts') }}"
+    columns:
+      - name: state_code
+        data_type: varchar
+        description: "{{ doc('column__state_cd') }}"
+        data_tests:
+          - not_null
+      - name: federal_reserve_district_id
+        data_type: number
+        description: "{{ doc('column__fed_district') }}"
+        data_tests:
+          - not_null
+      - name: federal_reserve_district_name
+        data_type: varchar
+        description: "{{ doc('column__fed_district_name') }}"
+        data_tests:
+          - not_null

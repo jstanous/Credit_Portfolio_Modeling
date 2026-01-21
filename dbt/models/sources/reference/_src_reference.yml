@@ -32,3 +32,44 @@ sources:
             description: "{{ doc('column__exposure_type') }}"
             data_tests:
               - not_null
+      - name: risk_segments
+        description: "{{ doc('table__risk_segments') }}"
+        columns:
+          - name: credit_grade
+            data_type: varchar
+            description: "{{ doc('column__credit_grade') }}"
+            data_tests:
+              - not_null
+          - name: risk_segment
+            data_type: varchar
+            description: "{{ doc('column__risk_segment') }}"
+            data_tests:
+              - not_null
+      - name: regions
+        description: "{{ doc('table__regions') }}"
+        columns:
+          - name: state_cd
+            data_type: varchar
+            description: "{{ doc('column__state_cd') }}"
+            data_tests:
+              - not_null
+          - name: division
+            data_type: varchar
+            description: "{{ doc('column__division') }}"
+            data_tests:
+              - not_null
+          - name: region
+            data_type: varchar
+            description: "{{ doc('column__region') }}"
+            data_tests:
+              - not_null
+          - name: fed_district
+            data_type: number
+            description: "{{ doc('column__fed_district') }}"
+            data_tests:
+              - not_null
+          - name: fed_district_name
+            data_type: varchar
+            description: "{{ doc('column__fed_district_name') }}"
+            data_tests:
+              - not_null
