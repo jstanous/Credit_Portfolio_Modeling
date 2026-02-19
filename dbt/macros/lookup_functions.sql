@@ -18,9 +18,9 @@ credit_portfolio.udf.udf_get_lgd({{ collateral_type }})
 -- Wrapper macro for Snowflake PD UDF
 -- Inputs:  Credit Subgrade
 -- Returns: Probability of Default (pd)
-{% macro get_pd(subgrade) -%}
-credit_portfolio.udf.udf_get_pd({{ subgrade }})
-{%- endmacro %}
+{% macro get_pd(subgrade) %}
+    {{ return("credit_portfolio.udf.udf_get_pd(" ~ subgrade ~ ")") }}
+{% endmacro %}
 
 -- Wrapper macro for Snowflake R UDF
 -- Inputs:  Exposure Type, PD
