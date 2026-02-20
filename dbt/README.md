@@ -79,12 +79,12 @@ Credit_Portfolio_Modeling/dbt/
 │        └── StatisticalFunctions/   # Statistical function ports (e.g., NORMINV)
 ├── macros/                          # Jinja macros wrapping UDFs and reusable SQL logic
 ├── meta/                            # Model documentation blocks (doc‑blocks for dbt docs site)
-│  ├── intermediates/                # doc‑blocks for intermediate models
+│  ├── intermediate/                 # doc‑blocks for intermediate models
 │  ├── marts/                        # doc‑blocks for dimensional and fact models
 │  ├── sources/                      # doc‑blocks for source layer tables
 │  └── staging/                      # doc‑blocks for staging models
 ├── models/                          # dbt model SQL and YAML artifacts
-│  ├── intermediates/                # Intermediate transformational models
+│  ├── intermediate/                 # Intermediate transformational models
 │  ├── marts/                        # Business‑ready dimensional and fact models
 │  ├── sources/                      # Source definitions (YAML configs for raw tables)
 │  └── staging/                      # Staging models (cleaned, renamed raw data)

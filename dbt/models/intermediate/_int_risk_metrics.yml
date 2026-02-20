@@ -1,0 +1,15 @@
+models:
+  - name: int_risk_metrics
+    description: "{{ doc('model__int_risk_metrics') }}"
+    columns:
+      - name: member_id
+        data_type: number
+        description: "{{ doc('column__member_id') }}"
+        data_tests:
+          - unique
+          - not_null
+      - name: pd
+        data_type: number
+        description: "{{ doc('column__pd') }}"
+        data_tests:
+          - not_null

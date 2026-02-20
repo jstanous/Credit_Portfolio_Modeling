@@ -25,7 +25,7 @@ Steps:
        RAW (raw data loads),
        REF (reference data),
        STAGING (staging models),
-       INTERMEDIATES (intermediate models),
+       INTERMEDIATE (intermediate models),
        MARTS (mart models).
        UDF (user defined functions).
      - Each schema includes comments clarifying its purpose.
@@ -116,7 +116,7 @@ CREATE SCHEMA IF NOT EXISTS REF
 CREATE SCHEMA IF NOT EXISTS STAGING
        COMMENT = 'Schema for credit portfolio staging models';
 
-CREATE SCHEMA IF NOT EXISTS INTERMEDIATES
+CREATE SCHEMA IF NOT EXISTS INTERMEDIATE
        COMMENT = 'Schema for credit portfolio intermediate models';
 
 CREATE SCHEMA IF NOT EXISTS MARTS

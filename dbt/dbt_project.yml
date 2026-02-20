@@ -43,9 +43,9 @@ models:
       +database: credit_portfolio
       +schema: staging
       +materialized: view
-    intermediates:
+    intermediate:
       +database: credit_portfolio
-      +schema: intermediates
+      +schema: intermediate
       +materialized: view
     marts:
       +database: credit_portfolio
